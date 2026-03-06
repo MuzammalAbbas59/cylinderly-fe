@@ -57,7 +57,7 @@ export function Header() {
         {/* ── Desktop Actions ── */}
         <div className="hidden md:flex items-center gap-3">
           <Link
-            href="/vendor/register"
+            href="/register"
             className="text-sm font-semibold text-[#3C7DD9] border border-[#5AB8FF]/50 px-4 py-2 rounded-lg hover:bg-[#EBF5FF] transition-all"
           >
             List Your Business
@@ -95,7 +95,7 @@ export function Header() {
           ))}
           <div className="flex flex-col gap-2 pt-2 border-t border-slate-100">
             <Link
-              href="/vendor/register"
+              href="/register"
               className="text-center text-sm font-semibold text-[#3C7DD9] border border-[#5AB8FF]/50 py-2.5 rounded-lg hover:bg-[#EBF5FF] transition-all"
             >
               List Your Business

@@ -29,8 +29,8 @@ export function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-            ? 'bg-[#060C18]/90 backdrop-blur-2xl'
-            : 'bg-transparent'
+          ? 'bg-[#060C18]/90 backdrop-blur-2xl'
+          : 'bg-transparent'
           }`}
         style={{
           boxShadow: scrolled ? '0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.3)' : 'none',
@@ -68,8 +68,8 @@ export function Header() {
                   key={href}
                   href={href}
                   className={`relative text-[13px] font-semibold px-4 py-1.5 rounded-full transition-all duration-200 ${active
-                      ? 'text-white'
-                      : 'text-white/55 hover:text-white'
+                    ? 'text-white'
+                    : 'text-white/55 hover:text-white'
                     }`}
                 >
                   {/* Active pill background */}
@@ -90,7 +90,7 @@ export function Header() {
           <div className="hidden md:flex items-center gap-2.5 shrink-0">
             {/* Ghost CTA */}
             <Link
-              href="/vendor/register"
+              href="/register"
               className="group flex items-center gap-1.5 text-[13px] font-semibold text-white/70 border border-white/15 px-4 py-2 rounded-full hover:text-white hover:border-white/35 hover:bg-white/5 transition-all duration-200"
             >
               <Flame className="w-3.5 h-3.5 text-brand-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
@@ -184,8 +184,8 @@ export function Header() {
                       key={href}
                       href={href}
                       className={`px-4 py-3 rounded-xl text-sm font-semibold transition-all ${active
-                          ? 'bg-white/10 text-white border border-white/10'
-                          : 'text-white/55 hover:text-white hover:bg-white/5'
+                        ? 'bg-white/10 text-white border border-white/10'
+                        : 'text-white/55 hover:text-white hover:bg-white/5'
                         }`}
                     >
                       {label}
@@ -197,7 +197,7 @@ export function Header() {
               {/* Drawer CTAs */}
               <div className="p-4 border-t border-white/8 flex flex-col gap-2">
                 <Link
-                  href="/vendor/register"
+                  href="/register"
                   className="text-center text-sm font-semibold text-white/70 border border-white/15 py-2.5 rounded-xl hover:text-white hover:bg-white/5 transition-all"
                 >
                   List Your Business
