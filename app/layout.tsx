@@ -1,6 +1,7 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Poppins, Nunito } from 'next/font/google';
 import { APP_CONFIG } from '@/lib/config';
+import { Providers } from '@/app/providers';
 import './globals.css';
 
 const poppins = Poppins({
@@ -16,6 +17,12 @@ const nunito = Nunito({
   weight: ['400', '600', '700'],
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_CONFIG.url),
@@ -62,9 +69,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${nunito.variable} antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.variable} ${nunito.variable} antialiased overflow-x-hidden bg-[#020617] text-slate-200 min-h-screen flex flex-col`} suppressHydrationWarning>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
