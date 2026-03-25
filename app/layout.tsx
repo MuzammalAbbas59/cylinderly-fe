@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from 'next';
-import { Poppins, Nunito } from 'next/font/google';
+import { Space_Grotesk, Inter } from 'next/font/google';
 import { APP_CONFIG } from '@/lib/config';
 import { Providers } from '@/app/providers';
 import './globals.css';
 
-const poppins = Poppins({
-  variable: '--font-poppins',
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
-const nunito = Nunito({
-  variable: '--font-nunito',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(APP_CONFIG.url),
   title: {
-    default: `${APP_CONFIG.name} — Find LPG Cylinders Near You`,
+    default: `Cylinderly | ${APP_CONFIG.tagline}`,
     template: `%s | ${APP_CONFIG.name}`,
   },
   description: APP_CONFIG.description,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: `${APP_CONFIG.name} — Find LPG Cylinders Near You`,
+    title: `Cylinderly | ${APP_CONFIG.tagline}`,
     description: APP_CONFIG.description,
     type: 'website',
     url: '/',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${APP_CONFIG.name} — Find LPG Cylinders Near You`,
+    title: `Cylinderly | ${APP_CONFIG.tagline}`,
     description: APP_CONFIG.description,
     images: ['/og-image.png'],
   },
@@ -69,8 +69,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${nunito.variable} antialiased overflow-x-hidden bg-[#020617] text-slate-200 min-h-screen flex flex-col`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+      </head>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} antialiased overflow-x-hidden bg-surface text-on-surface selection:bg-primary/30 min-h-screen flex flex-col`} suppressHydrationWarning>
         <Providers>
           {children}
         </Providers>

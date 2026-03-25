@@ -4,90 +4,55 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   THEME — Expose brand colours as Tailwind utility tokens.
-   Usage: text-brand-primary, bg-brand-dark, border-brand-accent/40
+   THEME — Industrial Intelligence System
    ============================================================ */
 @theme inline {
-  /* shadcn primitives */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+  /* Surface Hierarchy */
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-bright: #31394d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  --color-surface-variant: #2d3449;
 
-  /* radii */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  /* Brand Colors */
+  --color-primary: #4cd7f6;
+  --color-on-primary: #003640;
+  --color-primary-container: #002d36;
+  --color-on-primary-container: #009db8;
+  
+  --color-secondary: #bcc7de;
+  --color-on-secondary: #263143;
+  --color-secondary-container: #3e495d;
+  --color-on-secondary-container: #aeb9d0;
 
-  /* Brand colour tokens → now usable as Tailwind utilities e.g. bg-brand-primary */
-  --color-brand-primary: #38BDF8;
-  /* Sky 400 */
-  --color-brand-accent: #818CF8;
-  /* Indigo 400 */
-  --color-brand-dark: #020617;
-  /* Slate 950 */
-  --color-brand-mid: #0F172A;
-  /* Slate 900 */
-  --color-brand-deep: #000000;
-  /* Pure Black */
-  --color-brand-light: #E0F2FE;
-  /* Sky 100 */
+  --color-tertiary: #ffb95f;
+  --color-on-tertiary: #472a00;
 
-  /* Font families */
-  --font-sans: var(--font-poppins);
-  --font-body: var(--font-nunito);
-}
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
 
-/* ============================================================
-   DESIGN TOKENS
-   ============================================================ */
-:root {
-  --radius: 0.75rem;
+  /* Structural */
+  --color-outline: #8f9097;
+  --color-outline-variant: #45474c;
+  --color-background: #0b1326;
+  --color-on-background: #dae2fd;
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #c5c6cd;
 
-  /* Tailwind primitives (space-separated RGB for opacity support) */
-  /* Setting root default to dark mode */
-  --background: 2 6 23;
-  /* slate-950 */
-  --foreground: 248 250 252;
-  /* slate-50 */
-  --card: 15 23 42;
-  /* slate-900 */
-  --card-foreground: 248 250 252;
-  --popover: 15 23 42;
-  --popover-foreground: 248 250 252;
-  --primary: 56 189 248;
-  /* brand-primary */
-  --primary-foreground: 255 255 255;
-  --secondary: 129 140 248;
-  /* brand-accent */
-  --secondary-foreground: 255 255 255;
-  --muted: 30 41 59;
-  /* slate-800 */
-  --muted-foreground: 148 163 184;
-  /* slate-400 */
-  --accent: 30 41 59;
-  --accent-foreground: 248 250 252;
-  --destructive: 239 68 68;
-  --border: 30 41 59;
-  /* slate-800 */
-  --input: 30 41 59;
-  --ring: 90 184 255;
+  /* Typography */
+  --font-headline: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-label: var(--font-inter);
+
+  /* Radii - Industrial Sharpness */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
 }
 
 /* ============================================================
@@ -95,7 +60,7 @@
    ============================================================ */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-outline-variant/15 outline-primary/50;
     box-sizing: border-box;
   }
 
@@ -104,181 +69,85 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-nunito), sans-serif;
+    @apply bg-surface text-on-surface antialiased;
+    font-family: var(--font-inter), sans-serif;
   }
 
-  /* All headings use Poppins by default — no need for style={{fontFamily}} in JSX */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-poppins), sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), sans-serif;
+    @apply font-bold tracking-tight;
   }
+}
+
+/* ============================================================
+   SHARED UTILITIES
+   ============================================================ */
+.glass-card {
+  background: rgba(45, 52, 73, 0.4);
+  backdrop-filter: blur(12px);
+  @apply border border-outline-variant/10 shadow-xl;
+}
+
+.machined-button {
+  background: linear-gradient(135deg, #4cd7f6 0%, #009db8 100%);
+  @apply rounded-sm font-headline text-xs font-bold uppercase text-on-primary tracking-widest ease-out duration-150 active:scale-95 transition-all;
+}
+
+.market-pulse {
+  @apply w-1.5 h-1.5 bg-primary rounded-full;
+  box-shadow: 0 0 8px #4cd7f6;
+  animation: pulse-dot 2s ease-in-out infinite;
 }
 
 /* ============================================================
    ANIMATIONS
    ============================================================ */
-@keyframes float-slow {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
 }
 
 @keyframes pulse-dot {
-
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: .55;
-    transform: scale(.8);
-  }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .55; transform: scale(.8); }
 }
 
-@keyframes glow-ring {
-
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(90, 184, 255, .4);
-  }
-
-  50% {
-    box-shadow: 0 0 0 8px rgba(90, 184, 255, 0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-
-  100% {
-    background-position: 200% center;
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 8s ease-in-out infinite 1.5s;
-}
-
-.animate-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-.animate-glow-ring {
-  animation: glow-ring 2.5s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, #38BDF8 0%, #BAE6FD 50%, #38BDF8 100%);
-  background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ============================================================
-   GRADIENT TEXT HELPERS  (can't do with Tailwind alone)
-   ============================================================ */
-.text-brand-gradient {
-  background: linear-gradient(135deg, #818CF8, #38BDF8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@keyframes glow-primary {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76, 215, 246, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(76, 215, 246, 0); }
 }
 
 .text-hero-gradient {
-  background: linear-gradient(135deg, #38BDF8, #818CF8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-footer-gradient {
-  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  background: linear-gradient(135deg, #4cd7f6, #818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ============================================================
-   STRUCTURAL HELPERS  (pseudo-elements, impossible in Tailwind)
+   GLOBE — City name labels (Updated for new brand)
    ============================================================ */
-
-/* Hero section dot-grid overlay */
-.hero-dot-grid::before {
-  content: '';
+.globe-city-label {
   position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(90, 184, 255, .12) 1px, transparent 1px);
-  background-size: 30px 30px;
+  font-size: 10px;
+  @apply font-headline font-bold uppercase;
+  letter-spacing: 0.1em;
+  color: #4cd7f6;
+  text-shadow: 0 0 8px rgba(76, 215, 246, 0.5), 0 1px 3px rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
   pointer-events: none;
-  z-index: 0;
+  transition: opacity 0.35s ease, filter 0.35s ease;
+  z-index: 10;
 }
 
-/* How-It-Works connecting line */
-.steps-connector::before {
-  content: '';
-  position: absolute;
-  top: 2.5rem;
-  left: calc(33.333% - 1.5rem);
-  right: calc(33.333% - 1.5rem);
-  height: 2px;
-  background: linear-gradient(90deg, #38BDF8, #818CF8, #38BDF8);
-  opacity: .2;
-  z-index: 0;
+@supports (position-anchor: --test) {
+  .globe-city-label {
+    bottom: anchor(top);
+    left: anchor(center);
+    translate: -50% -6px;
+  }
 }
 
-/* Vendor card left accent bar */
-.vendor-card-accent::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, #38BDF8, #818CF8);
-  border-radius: 0 2px 2px 0;
-  opacity: 0;
-  transition: opacity .25s ease;
-}
-
-.vendor-card-accent:hover::before {
-  opacity: 1;
-}
-
-/* Feature card gradient border glow on hover */
-.feature-card-glow {
-  position: relative;
-}
-
-.feature-card-glow::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(56, 189, 248, .5), rgba(129, 140, 248, .2), transparent 60%);
-  opacity: 0;
-  transition: opacity .3s ease;
-  z-index: -1;
-}
-
-.feature-card-glow:hover::after {
-  opacity: 1;
+@supports not (position-anchor: --test) {
+  .globe-city-label { display: none; }
 }
